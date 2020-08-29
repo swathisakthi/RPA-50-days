@@ -1791,9 +1791,9 @@
     "restore": {
       "projectUniqueName": "data table",
       "projectName": "data table",
-      "projectPath": "C:\\Users\\ELCOT\\Documents\\UiPath\\data table\\.local",
+      "projectPath": "D:\\RPA repo\\RPA-50-days\\data table\\.local",
       "packagesPath": "C:\\Users\\ELCOT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ELCOT\\Documents\\UiPath\\data table\\.local"
+      "outputPath": "D:\\RPA repo\\RPA-50-days\\data table\\.local"
     },
     "frameworks": {
       "net461": {
