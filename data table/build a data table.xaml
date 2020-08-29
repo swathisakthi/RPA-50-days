@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="build_a_data_table" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="763,1758" sap2010:WorkflowViewState.IdRef="build_a_data_table_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="build_a_data_table" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="816,1860" sap2010:WorkflowViewState.IdRef="build_a_data_table_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
       <x:String>System.Activities</x:String>
@@ -52,7 +52,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="build_a_data_table" sap:VirtualizedContainerService.HintSize="468,1593" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="build_a_data_table" sap:VirtualizedContainerService.HintSize="468,1655" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtEmpData" />
       <Variable x:TypeArguments="x:String" Name="strData" />
@@ -92,14 +92,17 @@
           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,284" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="isalary" />
-              <Variable x:TypeArguments="x:String" Name="irevenue" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InputDialog Options="{x:Null}" Result="{x:Null}" DisplayName="Input Dialog to enter 'salary'" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;please enter your salary for :&quot;+row.Item(&quot;Emp name&quot;).Tostring]" Title="salary amount" />
+            <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog to enter 'salary'" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;please enter your salary for :&quot;+row.Item(&quot;Emp name&quot;).Tostring]" Title="salary amount">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:Int32">[isalary]</OutArgument>
+              </ui:InputDialog.Result>
+            </ui:InputDialog>
             <Assign DisplayName="Assign activity to 'salary'" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[row.item("salary")]</OutArgument>
@@ -112,6 +115,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="426,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[strData]" />
+    <ui:OutputDataTable DataTable="[dtEmpData]" DisplayName="Output Data Table activity" sap:VirtualizedContainerService.HintSize="426,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_8" Text="[strData]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="426,59" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[strData]" />
   </Sequence>
 </Activity>
